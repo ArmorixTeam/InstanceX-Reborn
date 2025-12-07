@@ -1,4 +1,4 @@
-name: Build Theos Package (macOS)
+name: Build Theos Package (macOS nyxolz yes)
 
 on:
   push:
