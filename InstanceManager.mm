@@ -1,5 +1,6 @@
 #import "ContainerManager.h"
 #import "InstanceManager.h"
+#import "InstanceModel.h"
 #import "LogosCompat.h"
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
