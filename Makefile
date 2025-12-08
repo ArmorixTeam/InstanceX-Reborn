@@ -11,6 +11,7 @@ InstanceX_FILES += SBMenuHooks.xm
 InstanceX_FILES += ContainerManager.mm
 InstanceX_FILES += InstanceLayout.mm
 InstanceX_FILES += InstanceManager.mm
+InstanceX_FILES += InstanceModel.mm
 
 InstanceX_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 InstanceX_CCFLAGS = -std=c++11
