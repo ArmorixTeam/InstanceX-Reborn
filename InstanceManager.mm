@@ -127,9 +127,8 @@
     envp[i] = NULL;
 
     // argv
-    const char *path = [binaryPath fileSystemRepresentation];
-    char **envp = (char **)malloc((n+1) * sizeof(char*));
-    pid_t pid = 0;
+    const char *path = [executablePath UTF8String];
+    char *argv[] = { (char *)path, NULL };
     int res = posix_spawn(&pid, path, NULL, NULL, argv, envp);
     for (NSUInteger j=0;j<i;j++) free(envp[j]);
     free(envp);
