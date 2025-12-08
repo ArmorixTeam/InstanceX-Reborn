@@ -115,7 +115,6 @@
     }
     if (![[ContainerManager shared] prepareLaunchEnvironmentForContainer:cid intoEnv:env]) return nil;
 
-    // Convert env dict to char**
     NSUInteger n = env.count;
     char **envp = (char **)malloc((n+1) * sizeof(char*));
     NSUInteger i = 0;
@@ -129,7 +128,7 @@
 
     // argv
     const char *path = [binaryPath fileSystemRepresentation];
-    char *const argv[] = {(char *)path, NULL};
+    char **envp = (char **)malloc((n+1) * sizeof(char*));
     pid_t pid = 0;
     int res = posix_spawn(&pid, path, NULL, NULL, argv, envp);
     for (NSUInteger j=0;j<i;j++) free(envp[j]);
