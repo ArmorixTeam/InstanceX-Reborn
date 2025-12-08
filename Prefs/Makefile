@@ -9,7 +9,6 @@ BUNDLE_NAME = InstanceXPrefs
 InstanceXPrefs_FILES = $(wildcard *.m)
 InstanceXPrefs_FRAMEWORKS = UIKit
 InstanceXPrefs_PRIVATE_FRAMEWORKS = Preferences
-InstanceXPrefs_INSTALL_PATH = /var/jb/Library/PreferenceBundles
 InstanceXPrefs_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/bundle.mk
