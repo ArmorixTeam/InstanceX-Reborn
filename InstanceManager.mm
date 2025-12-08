@@ -9,6 +9,7 @@
 
 #define IXClass(name) NSClassFromString(name)
 #define IXShared(cls, sel) ((id(*)(id, SEL))objc_msgSend)((id)cls, NSSelectorFromString(sel))
+
 @interface IXInstanceManager : NSObject
 @property(nonatomic) NSMutableDictionary<NSString*, IXAppState*> *apps;
 + (instancetype)shared;
@@ -26,7 +27,6 @@
     count = MIN(MAX(2, count), 4);
     IXAppState *state = self.apps[bundleID];
     if (!state) { state = [IXAppState new]; state.bundleID = bundleID; state.instances = [NSMutableArray new]; self.apps[bundleID] = state; }
-    // terminate existing processes
     for (IXInstanceRecord *r in [state.instances copy]) {
         if (r.pid > 0) kill(r.pid, SIGKILL);
     }
@@ -48,7 +48,6 @@
 }
 
 - (IXInstanceRecord*)_launchInstanceForBundle:(NSString*)bundleID index:(NSUInteger)index {
-    // 1) Try FrontBoard multi-scene
     Class FBSSystemService = IXClass(@"FBSSystemService");
     if (FBSSystemService) {
         id svc = IXShared(FBSSystemService, @"sharedService");
@@ -71,12 +70,10 @@
         }
     }
 
-    // 2) Fallback to container + posix_spawn
     ContainerManager *cm = [ContainerManager shared];
     NSString *cid = [cm createContainerForBundle:bundleID instanceIndex:index];
     if (!cid) return nil;
 
-    // find executable path via LSApplicationProxy if available
     NSString *binaryPath = nil;
     Class LSApplicationProxy = IXClass(@"LSApplicationProxy");
     if (LSApplicationProxy && [LSApplicationProxy respondsToSelector:NSSelectorFromString(@"applicationProxyForIdentifier:")]) {
@@ -91,7 +88,6 @@
     }
 
     if (!binaryPath || ![[NSFileManager defaultManager] fileExistsAtPath:binaryPath]) {
-        // final fallback: open application normally
         Class LSWorkspace = IXClass(@"LSApplicationWorkspace");
         id ws = IXShared(LSWorkspace, @"defaultWorkspace");
         if (ws && [ws respondsToSelector:NSSelectorFromString(@"openApplicationWithBundleID:")]) {
@@ -101,7 +97,6 @@
         return nil;
     }
 
-    // Prepare env
     extern char **environ;
     NSMutableDictionary *env = [NSMutableDictionary new];
     for (char **e = environ; *e; ++e) {
@@ -126,9 +121,9 @@
     }
     envp[i] = NULL;
 
-    // argv
-    const char *path = [executablePath UTF8String];
+    const char *path = [binaryPath UTF8String];
     char *argv[] = { (char *)path, NULL };
+    pid_t pid;
     int res = posix_spawn(&pid, path, NULL, NULL, argv, envp);
     for (NSUInteger j=0;j<i;j++) free(envp[j]);
     free(envp);
