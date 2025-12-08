@@ -11,14 +11,6 @@
 #define IXClass(name) NSClassFromString(name)
 #define IXShared(cls, sel) ((id(*)(id, SEL))objc_msgSend)((id)cls, NSSelectorFromString(sel))
 
-@interface IXInstanceManager : NSObject
-@property(nonatomic) NSMutableDictionary<NSString*, IXAppState*> *apps;
-+ (instancetype)shared;
-- (void)createInstancesForBundle:(NSString*)bundleID count:(NSUInteger)count;
-- (void)addInstanceForBundle:(NSString*)bundleID;
-- (void)handleProcessExitPid:(pid_t)pid;
-@end
-
 @implementation IXInstanceManager
 
 + (instancetype)shared { static IXInstanceManager *S; static dispatch_once_t once; dispatch_once(&once, ^{ S=[IXInstanceManager new]; S.apps=[NSMutableDictionary new]; }); return S; }

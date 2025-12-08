@@ -1,0 +1,26 @@
+---
+triple:          'arm64e-apple-darwin'
+binary-path:     '/Users/doomsboygaming/Documents/InstanceX-Reborn/.theos/obj/debug/arm64e/instancex_container_shim.dylib'
+relocations:
+  - { offset: 0x1E, size: 0x8, addend: 0x0, symName: _NSHomeDirectory, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0xA8 }
+  - { offset: 0x39, size: 0x8, addend: 0x0, symName: _getenv, symObjAddr: 0xA8, symBinAddr: 0x40A8, symSize: 0xCC }
+  - { offset: 0x5E, size: 0x8, addend: 0x0, symName: _getenv.orig_getenv, symObjAddr: 0xF20, symBinAddr: 0x10018, symSize: 0x0 }
+  - { offset: 0xB1, size: 0x8, addend: 0x0, symName: _getpwuid_r, symObjAddr: 0x174, symBinAddr: 0x4174, symSize: 0x110 }
+  - { offset: 0xD6, size: 0x8, addend: 0x0, symName: _getpwuid_r.orig_getpwuid_r, symObjAddr: 0xF28, symBinAddr: 0x10020, symSize: 0x0 }
+  - { offset: 0xEB, size: 0x8, addend: 0x0, symName: _getpwuid_r.pathbuf, symObjAddr: 0xF30, symBinAddr: 0x10028, symSize: 0x0 }
+  - { offset: 0x296, size: 0x8, addend: 0x0, symName: _orig_NSHomeDirectory, symObjAddr: 0xF18, symBinAddr: 0x10010, symSize: 0x0 }
+  - { offset: 0x2B4, size: 0x8, addend: 0x0, symName: _make_container_home, symObjAddr: 0x284, symBinAddr: 0x4284, symSize: 0x80 }
+  - { offset: 0x2D9, size: 0x8, addend: 0x0, symName: _make_container_home.buf, symObjAddr: 0x1330, symBinAddr: 0x10428, symSize: 0x0 }
+  - { offset: 0x2F1, size: 0x8, addend: 0x0, symName: _NSHomeDirectory, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0xA8 }
+  - { offset: 0x337, size: 0x8, addend: 0x0, symName: _SecItemAdd, symObjAddr: 0x0, symBinAddr: 0x4304, symSize: 0x90 }
+  - { offset: 0x35E, size: 0x8, addend: 0x0, symName: _orig_SecItemAdd, symObjAddr: 0x1338, symBinAddr: 0x10828, symSize: 0x0 }
+  - { offset: 0x3D7, size: 0x8, addend: 0x0, symName: _orig_SecItemCopyMatching, symObjAddr: 0x1340, symBinAddr: 0x10830, symSize: 0x0 }
+  - { offset: 0x3EC, size: 0x8, addend: 0x0, symName: _orig_SecItemUpdate, symObjAddr: 0x1348, symBinAddr: 0x10838, symSize: 0x0 }
+  - { offset: 0x416, size: 0x8, addend: 0x0, symName: _orig_SecItemDelete, symObjAddr: 0x1350, symBinAddr: 0x10840, symSize: 0x0 }
+  - { offset: 0x4AC, size: 0x8, addend: 0x0, symName: _SecItemAdd, symObjAddr: 0x0, symBinAddr: 0x4304, symSize: 0x90 }
+  - { offset: 0x516, size: 0x8, addend: 0x0, symName: __namespaceDict, symObjAddr: 0x90, symBinAddr: 0x4394, symSize: 0x188 }
+  - { offset: 0x593, size: 0x8, addend: 0x0, symName: _SecItemCopyMatching, symObjAddr: 0x218, symBinAddr: 0x451C, symSize: 0x90 }
+  - { offset: 0x5E5, size: 0x8, addend: 0x0, symName: _SecItemUpdate, symObjAddr: 0x2A8, symBinAddr: 0x45AC, symSize: 0xB4 }
+  - { offset: 0x645, size: 0x8, addend: 0x0, symName: _SecItemDelete, symObjAddr: 0x35C, symBinAddr: 0x4660, symSize: 0x88 }
+  - { offset: 0x689, size: 0x8, addend: 0x0, symName: _namespaceKeyForContainer, symObjAddr: 0x3E4, symBinAddr: 0x46E8, symSize: 0x8C }
+...

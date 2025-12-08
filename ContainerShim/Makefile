@@ -3,11 +3,10 @@ TARGET := iphone:clang:latest:15.0
 
 include $(THEOS)/makefiles/common.mk
 
-TOOL_NAME = containershim
+LIBRARY_NAME = instancex_container_shim
 
-containershim_FILES = main.m
-containershim_CFLAGS = -fobjc-arc
-containershim_CODESIGN_FLAGS = -Sentitlements.plist
-containershim_INSTALL_PATH = /usr/bin
+instancex_container_shim_FILES = ContainerShim.m KeychainShim.m
+instancex_container_shim_INSTALL_PATH = /usr/lib
+instancex_container_shim_FRAMEWORKS = Foundation Security
 
-include $(THEOS_MAKE_PATH)/tool.mk
+include $(THEOS_MAKE_PATH)/library.mk
