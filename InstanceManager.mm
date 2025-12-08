@@ -1,7 +1,14 @@
 #import "ContainerManager.h"
 #import "InstanceManager.h"
+#import "LogosCompat.h"
+#import <Foundation/Foundation.h>
+#import <objc/runtime.h>
+#import <objc/message.h>
+#import <spawn.h>
 #import <stdlib.h>
 
+#define IXClass(name) NSClassFromString(name)
+#define IXShared(cls, sel) [cls performSelector:NSSelectorFromString(sel)]
 @interface IXInstanceManager : NSObject
 @property(nonatomic) NSMutableDictionary<NSString*, IXAppState*> *apps;
 + (instancetype)shared;
