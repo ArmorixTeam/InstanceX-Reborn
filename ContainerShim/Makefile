@@ -8,5 +8,6 @@ LIBRARY_NAME = instancex_container_shim
 
 instancex_container_shim_FILES = ContainerShim.m KeychainShim.m
 instancex_container_shim_FRAMEWORKS = Foundation Security
+instancex_container_shim_INSTALL_PATH = /usr/lib
 
 include $(THEOS_MAKE_PATH)/library.mk
