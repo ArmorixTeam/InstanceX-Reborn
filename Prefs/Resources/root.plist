@@ -13,7 +13,7 @@
       <key>cell</key><string>PSSwitchCell</string>
       <key>label</key><string>Enable InstanceX</string>
       <key>key</key><string>enabled</string>
-      <key>defaults</key><string>com.yourname.instancex</string>
+      <key>defaults</key><string>com.zodacios.instancex</string>
       <key>default</key><true/>
     </dict>
     <dict>
@@ -29,7 +29,7 @@
       <key>cell</key><string>PSButtonCell</string>
       <key>label</key><string>Prefer libCrane if available</string>
       <key>key</key><string>prefer_libcrane</string>
-      <key>defaults</key><string>com.yourname.instancex</string>
+      <key>defaults</key><string>com.zodscios.instancex</string>
     </dict>
   </array>
 </dict>
