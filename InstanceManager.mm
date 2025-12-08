@@ -8,7 +8,7 @@
 #import <stdlib.h>
 
 #define IXClass(name) NSClassFromString(name)
-#define IXShared(cls, sel) [cls performSelector:NSSelectorFromString(sel)]
+#define IXShared(cls, sel) ((id(*)(id, SEL))objc_msgSend)((id)cls, NSSelectorFromString(sel))
 @interface IXInstanceManager : NSObject
 @property(nonatomic) NSMutableDictionary<NSString*, IXAppState*> *apps;
 + (instancetype)shared;
