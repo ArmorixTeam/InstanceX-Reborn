@@ -7,8 +7,10 @@ THEOS_PACKAGE_SCHEME = rootless
 BUNDLE_NAME = InstanceXPrefs
 InstanceXPrefs_FILES = IXRootListController.mm
 InstanceXPrefs_FRAMEWORKS = UIKit
-InstanceXPrefs_CFLAGS += -Wno-incomplete-umbrella
 InstanceXPrefs_INSTALL_PATH = /Library/PreferenceBundles
+
+InstanceXPrefs_LDFLAGS += -undefined dynamic_lookup
+
 InstanceXPrefs_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/bundle.mk
